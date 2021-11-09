@@ -1,20 +1,47 @@
 var canvas = new fabric.Canvas('canvas');
-var path = new fabric.Path('M 0 0 L 40 -40 M 0 0 L 40 40 z', {
-    left: 100,
-    top: 100,
-    stroke: 'red',
-    strokeWidth: 1,
-    fill: false
-});
+
+var pos = {x:0,y:0}
 
 var box = new fabric.Rect({
-    height:40,
-    width:40,
-    top:100,
-    left:100
+    fill: '',
+    stroke: 'gray',
+    strokeWidth:1,
+    height: 100,
+    width: 100,
+    top: -50,
+    left: -50,
+    originX: 'center',
+    originY: 'center'
 })
 
-canvas.add(path, box);
+var arrowBottom = new fabric.Path('M 0 0 L -8 8 M 0 0 L 8 8 z', {
+    left: -50,
+    top: -50,
+    stroke: 'red',
+    strokeWidth: 3,
+    fill: false,
+    originX: 'center',
+    originY: 'center'
+});
+
+var arrowTop = new fabric.Path('M 0 0 L -4 -4 M 0 0 L -4 4 z', {
+    left: 0,
+    top: -100,
+    stroke: 'green',
+    strokeWidth: 1,
+    fill: false,
+    originX: 'center',
+    originY: 'center'
+});
+
+
+
+var shape = new fabric.Group([box, arrowTop, arrowBottom],{
+    top: 200, left:200
+})
+canvas.add(shape);
+
+
 
 // canvas.on('mouse:move', (event)=>{
 //     xy = canvas.getPointer(event.e)
@@ -35,5 +62,3 @@ canvas.on({
     'object:modified': modifiedHandler,
     'object:moving': moveHandler
 })
-
-a = {"e":{"isTrusted":true},"target":{"type":"circle","version":"4.6.0","originX":"left","originY":"top","left":140,"top":160,"width":40,"height":40,"fill":"blue","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeDashOffset":0,"strokeLineJoin":"miter","strokeUniform":false,"strokeMiterLimit":4,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","skewX":0,"skewY":0,"radius":20,"startAngle":0,"endAngle":6.283185307179586},"subTargets":[],"button":1,"isClick":false,"pointer":{"x":141,"y":160.15625},"absolutePointer":{"x":141,"y":160.15625},"transform":null}
